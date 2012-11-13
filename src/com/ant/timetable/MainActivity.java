@@ -3,7 +3,6 @@ package com.ant.timetable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
