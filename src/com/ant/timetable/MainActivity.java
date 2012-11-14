@@ -13,7 +13,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ public class MainActivity extends FragmentActivity {
 	private SectionsPagerAdapter mSectionsPagerAdapter;
 	private ViewPager mViewPager;
 	private String a2;
-	private TextView textView1;
+	private TextView tvCourseName;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,13 +28,9 @@ public class MainActivity extends FragmentActivity {
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 		mViewPager = (ViewPager) findViewById(R.id.pager);
-		textView1 = (TextView)findViewById(R.id.tv_course_name); 
-		textView1.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				//startActivity(new Intent(MainActivity.this,DetailEdit.class));
-			}
-		});
-		
+		tvCourseName = (TextView) findViewById(R.id.tv_course_m_1);
+		a2 = "dsfd";
+		tvCourseName.getText().toString();
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		mViewPager.setCurrentItem(getWeek());
 		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
@@ -79,6 +74,7 @@ public class MainActivity extends FragmentActivity {
 		} else if (a2.equals("÷‹»’")) {
 			week = 7;
 		}
+
 		return week;
 	}
 

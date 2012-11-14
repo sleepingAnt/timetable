@@ -19,7 +19,7 @@
             android:background="@color/white" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/tv_morning"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="5dp" >
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tv_course_m_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -61,7 +61,7 @@
                         android:textColorHint="@color/orange" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tv_classroom_m_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2301"
@@ -78,7 +78,7 @@
                     android:background="@color/orange" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_teacher_m_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -102,7 +102,7 @@
 
                     <TextView
                         android:clickable="true"
-                        android:id="@+id/tv_course_name"
+                        android:id="@+id/tv_course_m_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
