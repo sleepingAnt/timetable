@@ -8,9 +8,9 @@
     <string name="title_section3">星期三</string>
     <string name="title_section2">星期二</string>
     <string name="title_section1">星期一</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">欢迎使用！</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">我的课程表</string>
-    <string name="title_activity_welcome">欢迎</string>
+    <string name="title_activity_welcome">课程表 </string>
 
 </resources>
