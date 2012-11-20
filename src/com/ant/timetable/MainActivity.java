@@ -3,6 +3,7 @@ package com.ant.timetable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,9 +12,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
@@ -28,9 +28,6 @@ public class MainActivity extends FragmentActivity {
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 		mViewPager = (ViewPager) findViewById(R.id.pager);
-		tvCourseName = (TextView) findViewById(R.id.tv_course_m_1);
-		a2 = "dsfd";
-		tvCourseName.getText().toString();
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		mViewPager.setCurrentItem(getWeek());
 		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
@@ -50,6 +47,7 @@ public class MainActivity extends FragmentActivity {
 
 			}
 		});
+
 	}
 
 	/**
@@ -83,9 +81,11 @@ public class MainActivity extends FragmentActivity {
 	 * one of the primary sections of the app.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
+//
+//			tvCourseName = (TextView) findViewById(R.id.tv_morning);
+//			tvCourseName.getText().toString(); 
 		}
 
 		@Override
@@ -133,16 +133,26 @@ public class MainActivity extends FragmentActivity {
 	 * displays dummy text.
 	 */
 	public static class DummySectionFragment extends Fragment {
+		public static final String ARG_SECTION_NUMBER = "section_number";
+		private TextView tvCourseName;
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState) {
+			super.onActivityCreated(savedInstanceState);
+			tvCourseName = (TextView) getView().findViewById(R.id.tv_course_m_1);
+			tvCourseName.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					startActivity(new Intent(getActivity(), DetailEdit.class));
+				}
+			});
+		}
 		public DummySectionFragment() {
 		}
-
-		public static final String ARG_SECTION_NUMBER = "section_number";
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View view = LayoutInflater.from(getActivity()).inflate(
-					R.layout.table_main, null);
+			View v = inflater.inflate(R.layout.table_main, container, false);
+//			tvCourseName.getText().toString();
 			/*
 			 * TextView textView = new TextView(getActivity());
 			 * textView.setGravity(Gravity.CENTER); Bundle args =
@@ -150,7 +160,7 @@ public class MainActivity extends FragmentActivity {
 			 * textView.setText(Integer.toString(args.getInt(ARG_SECTION_NUMBER
 			 * )));
 			 */
-			return view;
+			return v;
 		}
 	}
 }
