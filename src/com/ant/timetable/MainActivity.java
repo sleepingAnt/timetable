@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.Layout;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
@@ -20,7 +21,6 @@ public class MainActivity extends FragmentActivity {
 	private SectionsPagerAdapter mSectionsPagerAdapter;
 	private ViewPager mViewPager;
 	private String a2;
-	private TextView tvCourseName;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,48 +51,19 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * 获取当天是星期几
-	 * @return week 当天的星期
-	 */
-	private int getWeek() {
-		SimpleDateFormat dateformat2 = new SimpleDateFormat("EEE");
-		a2 = dateformat2.format(new Date());
-		Log.i("my", a2);
-		int week = 1;
-		if (a2.equals("周二")) {
-			week = 2;
-		} else if (a2.equals("周三")) {
-			week = 3;
-		} else if (a2.equals("周四")) {
-			week = 4;
-		} else if (a2.equals("周五")) {
-			week = 5;
-		} else if (a2.equals("周六")) {
-			week = 6;
-		} else if (a2.equals("周日")) {
-			week = 7;
-		}
-
-		return week;
-	}
-
-	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the primary sections of the app.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
-//
-//			tvCourseName = (TextView) findViewById(R.id.tv_morning);
-//			tvCourseName.getText().toString(); 
 		}
 
 		@Override
 		public Fragment getItem(int i) {
 			Fragment fragment = new DummySectionFragment();
 			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i);
+			args.putInt(DummySectionFragment.ARG_WEEK_NUMBER, i);
 			fragment.setArguments(args);
 			return fragment;
 		}
@@ -133,18 +104,26 @@ public class MainActivity extends FragmentActivity {
 	 * displays dummy text.
 	 */
 	public static class DummySectionFragment extends Fragment {
-		public static final String ARG_SECTION_NUMBER = "section_number";
-		private TextView tvCourseName;
+		public static final String ARG_WEEK_NUMBER = "week_number";
+		Bundle args;
+		int week;
+		private View tvCourseName;
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
-			tvCourseName = (TextView) getView().findViewById(R.id.tv_course_m_1);
-			tvCourseName.setOnClickListener(new OnClickListener() {
-				public void onClick(View v) {
-					startActivity(new Intent(getActivity(), DetailEdit.class));
-				}
-			});
+			tvCourseName = (View) getView().findViewById(R.id.detail_content_morning_1);
+			tvCourseName.setOnClickListener(detailEditerListener);
 		}
+		
+		OnClickListener detailEditerListener = new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.putExtra("week", week);
+				intent.putExtra("section", 1);
+				intent.setClass(getActivity(), DetailEdit.class);
+				startActivity(intent);
+			}
+		};
 		public DummySectionFragment() {
 		}
 
@@ -152,6 +131,8 @@ public class MainActivity extends FragmentActivity {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			View v = inflater.inflate(R.layout.table_main, container, false);
+			args = getArguments();
+			week = args.getInt(ARG_WEEK_NUMBER);
 //			tvCourseName.getText().toString();
 			/*
 			 * TextView textView = new TextView(getActivity());
@@ -162,5 +143,30 @@ public class MainActivity extends FragmentActivity {
 			 */
 			return v;
 		}
+	}
+
+	/**
+	 * 获取当天是星期几
+	 * @return week 当天的星期
+	 */
+	private int getWeek() {
+		SimpleDateFormat dateformat2 = new SimpleDateFormat("EEE");
+		a2 = dateformat2.format(new Date());
+		Log.i("my", a2);
+		int week = 1;
+		if (a2.equals("周二")) {
+			week = 2;
+		} else if (a2.equals("周三")) {
+			week = 3;
+		} else if (a2.equals("周四")) {
+			week = 4;
+		} else if (a2.equals("周五")) {
+			week = 5;
+		} else if (a2.equals("周六")) {
+			week = 6;
+		} else if (a2.equals("周日")) {
+			week = 7;
+		}
+		return week;
 	}
 }
