@@ -38,12 +38,12 @@ public class DetailEdit extends Activity {
 		btn_ok = (Button) findViewById(R.id.btn_ok);
 		btn_back = (Button) findViewById(R.id.btn_back);
 
-		courseName = tv_course_name.getText().toString();
-		teacher = tv_teacher.getText().toString();
-		classroom = tv_classroom.getText().toString();
 
 		btn_ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				courseName = tv_course_name.getText().toString();
+				teacher = tv_teacher.getText().toString();
+				classroom = tv_classroom.getText().toString();
 				if (courseName.equals("") || teacher.equals("")
 						|| classroom.equals("")) {
 
@@ -59,12 +59,14 @@ public class DetailEdit extends Activity {
 	}
 
 	private void updateCourse() {
+		boolean b;
+		myMainDB.getWritableDatabase();
 		if (myMainDB.isCourseExist(week, section)) {
-			myMainDB.editCourse(week, section, courseName, classroom, teacher);
-			Log.i("my", "为空");
-		} else {
-			boolean b = myMainDB.addCourse(week, section, courseName, classroom, teacher);
+			b = myMainDB.editCourse(week, section, courseName, classroom, teacher);
 			Log.i("my", "不为空");
+		} else {
+			b = myMainDB.addCourse(week, section, courseName, classroom, teacher);
+			Log.i("my", "为空");
 			if(b) {
 				Log.i("my", "添加成功");
 			} else {

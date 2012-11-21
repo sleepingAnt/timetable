@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class MainDB extends SQLiteOpenHelper {
 	@Override
@@ -48,6 +49,7 @@ public class MainDB extends SQLiteOpenHelper {
 			if(cursor.getCount() == 0) {
 				result = false;
 			}
+			Log.i("my","count"+cursor.getCount());
 			closeDB();
 		} catch (Exception e) {
 			result = false;
@@ -77,7 +79,7 @@ public class MainDB extends SQLiteOpenHelper {
 			db = this.getWritableDatabase();
 			String sql = String
 					.format("insert into table_course (t_week,t_section,course_name,course_classroom,course_teacher)"
-							+ " values (%d,%d,%s,%s,%s)", week, section, courseName,
+							+ " values (%d,%d,'%s','%s','%s')", week, section, courseName,
 							classroom, teacher);
 			db.execSQL(sql);
 			closeDB();

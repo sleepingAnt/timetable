@@ -94,8 +94,9 @@
                 android:background="@color/white"
                 android:gravity="bottom"
                 android:orientation="vertical" >
-
+
                 <LinearLayout
+                    android:id="@+id/detail_content_morning_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -173,8 +174,9 @@
             android:layout_height="match_parent"
             android:layout_weight="9"
             android:orientation="vertical" >
-
+
             <LinearLayout
+                android:id="@+id/detail_content_noon_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0.5dp"
@@ -223,8 +225,9 @@
                     android:gravity="bottom"
                     android:text="王江" />
             </LinearLayout>
-
+
             <LinearLayout
+                android:id="@+id/detail_content_noon_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -309,8 +312,9 @@
             android:layout_height="match_parent"
             android:layout_weight="9"
             android:orientation="vertical" >
-
+
             <LinearLayout
+                android:id="@+id/detail_content_night_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0.5dp"
@@ -359,8 +363,9 @@
                     android:gravity="bottom"
                     android:text="王江" />
             </LinearLayout>
-
+
             <LinearLayout
+                android:id="@+id/detail_content_night_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

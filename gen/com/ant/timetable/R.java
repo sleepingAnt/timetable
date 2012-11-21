@@ -31,18 +31,23 @@ public final class R {
         public static final int classroom=0x7f080007;
         public static final int course_name=0x7f080003;
         public static final int detail_content_morning_1=0x7f08000b;
-        public static final int menu_settings=0x7f080012;
+        public static final int detail_content_morning_2=0x7f08000f;
+        public static final int detail_content_night_1=0x7f080015;
+        public static final int detail_content_night_2=0x7f080016;
+        public static final int detail_content_noon_1=0x7f080012;
+        public static final int detail_content_noon_2=0x7f080014;
+        public static final int menu_settings=0x7f080017;
         public static final int pager=0x7f080000;
         public static final int pager_titlmViewPagermViewPagere_strip=0x7f080001;
         public static final int teacher=0x7f080005;
         public static final int textView1=0x7f080002;
         public static final int textView2=0x7f080004;
         public static final int textView3=0x7f080006;
-        public static final int textView4=0x7f080011;
-        public static final int textView5=0x7f080010;
+        public static final int textView4=0x7f080013;
+        public static final int textView5=0x7f080011;
         public static final int tv_classroom_m_1=0x7f08000d;
         public static final int tv_course_m_1=0x7f08000c;
-        public static final int tv_course_m_2=0x7f08000f;
+        public static final int tv_course_m_2=0x7f080010;
         public static final int tv_morning=0x7f08000a;
         public static final int tv_teacher_m_1=0x7f08000e;
     }

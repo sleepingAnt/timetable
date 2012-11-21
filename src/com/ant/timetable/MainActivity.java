@@ -107,19 +107,49 @@ public class MainActivity extends FragmentActivity {
 		public static final String ARG_WEEK_NUMBER = "week_number";
 		Bundle args;
 		int week;
-		private View tvCourseName;
+		private View tvCourseName1;
+		private View tvCourseName2;
+		private View tvCourseName3;
+		private View tvCourseName4;
+		private View tvCourseName5;
+		private View tvCourseName6;
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
-			tvCourseName = (View) getView().findViewById(R.id.detail_content_morning_1);
-			tvCourseName.setOnClickListener(detailEditerListener);
+			tvCourseName1 = (View) getView().findViewById(R.id.detail_content_morning_1);
+			tvCourseName2 = (View) getView().findViewById(R.id.detail_content_morning_2);
+			tvCourseName3 = (View) getView().findViewById(R.id.detail_content_noon_1);
+			tvCourseName4 = (View) getView().findViewById(R.id.detail_content_noon_2);
+			tvCourseName5 = (View) getView().findViewById(R.id.detail_content_night_1);
+			tvCourseName6 = (View) getView().findViewById(R.id.detail_content_night_2);
+			tvCourseName1.setOnClickListener(detailEditerListener);
+			tvCourseName2.setOnClickListener(detailEditerListener);
+			tvCourseName3.setOnClickListener(detailEditerListener);
+			tvCourseName4.setOnClickListener(detailEditerListener);
+			tvCourseName5.setOnClickListener(detailEditerListener);
+			tvCourseName6.setOnClickListener(detailEditerListener);
 		}
 		
 		OnClickListener detailEditerListener = new OnClickListener() {
 			public void onClick(View v) {
+				int s = 0;
+				if(v.getId() == R.id.detail_content_morning_1) {
+					s = 1;
+				} else if(v.getId() == R.id.detail_content_morning_2) {
+					s = 2;
+				} else if(v.getId() == R.id.detail_content_noon_1) {
+					s = 3;
+				} else if(v.getId() == R.id.detail_content_noon_2) {
+					s = 4;
+				} else if(v.getId() == R.id.detail_content_night_1) {
+					s = 5;
+				} else if(v.getId() == R.id.detail_content_night_2) {
+					s = 6;
+				}
+				Log.i("my", "µÚ¼¸½Ú£¿"+s);
 				Intent intent = new Intent();
 				intent.putExtra("week", week);
-				intent.putExtra("section", 1);
+				intent.putExtra("section", s);
 				intent.setClass(getActivity(), DetailEdit.class);
 				startActivity(intent);
 			}
