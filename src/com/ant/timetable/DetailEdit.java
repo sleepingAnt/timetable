@@ -39,6 +39,10 @@ public class DetailEdit extends Activity {
 		tv_classroom = (TextView) findViewById(R.id.classroom);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
 		btn_back = (Button) findViewById(R.id.btn_back);
+		
+		tv_course_name.setText(myMainDB.queryCourse(week, section).getCourseName());
+		tv_teacher.setText(myMainDB.queryCourse(week, section).getTeacher());
+		tv_classroom.setText(myMainDB.queryCourse(week, section).getClassroom());
 
 
 		btn_ok.setOnClickListener(new OnClickListener() {
