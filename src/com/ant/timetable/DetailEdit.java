@@ -55,6 +55,12 @@ public class DetailEdit extends Activity {
 				DetailEdit.this.finish();
 			}
 		});
+		
+		btn_back.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				DetailEdit.this.finish();
+			}
+		});
 
 	}
 

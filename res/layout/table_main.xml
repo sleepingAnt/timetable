@@ -77,7 +77,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="100dp"
                     android:background="@color/orange" />
-
+
                 <TextView
                     android:id="@+id/tv_teacher_m_1"
                     android:layout_width="wrap_content"
@@ -85,6 +85,7 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="bottom"
                     android:text="王江" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -111,15 +112,16 @@
                         android:text="高等数学"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/dark_blue" />
-
+
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tv_classroom_m_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2301"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/classroom_no"
                         android:textStyle="italic" />
+
                 </LinearLayout>
 
                 <View
@@ -128,14 +130,15 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="100dp"
                     android:background="@color/orange" />
-
+
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_teacher_m_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="bottom"
                     android:text="王江" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -190,24 +193,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="5dp" >
-
+
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tv_course_noon_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:text="高等数学"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/dark_blue" />
-
+
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tv_classroom_noon_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2301"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/classroom_no"
                         android:textStyle="italic" />
+
                 </LinearLayout>
 
                 <View
@@ -216,14 +220,15 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="100dp"
                     android:background="@color/orange" />
-
+
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_teacher_noon_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="bottom"
                     android:text="王江" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -240,24 +245,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="5dp" >
-
+
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tv_course_noon_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:text="高等数学"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/dark_blue" />
-
+
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tv_classroom_noon_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2301"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/classroom_no"
                         android:textStyle="italic" />
+
                 </LinearLayout>
 
                 <View
@@ -266,14 +272,15 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="100dp"
                     android:background="@color/orange" />
-
+
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_teacher_noon_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="bottom"
                     android:text="王江" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -328,24 +335,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="5dp" >
-
+
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tv_course_night_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:text="高等数学"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/dark_blue" />
-
+
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tv_classroom_night_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2301"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/classroom_no"
                         android:textStyle="italic" />
+
                 </LinearLayout>
 
                 <View
@@ -354,14 +362,15 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="100dp"
                     android:background="@color/orange" />
-
+
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_teacher_night_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="bottom"
                     android:text="王江" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -378,24 +387,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="5dp" >
-
+
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tv_course_night_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:text="高等数学"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/dark_blue" />
-
+
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tv_classroom_night_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2301"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/classroom_no"
                         android:textStyle="italic" />
+
                 </LinearLayout>
 
                 <View
@@ -404,14 +414,15 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="100dp"
                     android:background="@color/orange" />
-
+
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_teacher_night_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="bottom"
                     android:text="王江" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
