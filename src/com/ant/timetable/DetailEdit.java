@@ -44,7 +44,6 @@ public class DetailEdit extends Activity {
 		tv_teacher.setText(myMainDB.queryCourse(week, section).getTeacher());
 		tv_classroom.setText(myMainDB.queryCourse(week, section).getClassroom());
 
-
 		btn_ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				courseName = tv_course_name.getText().toString();
