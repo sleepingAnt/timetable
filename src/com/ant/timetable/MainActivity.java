@@ -3,8 +3,6 @@ package com.ant.timetable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.ant.timetable.db.MainDB;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,9 +11,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ant.timetable.db.MainDB;
 
 public class MainActivity extends FragmentActivity {
 	private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -29,18 +31,18 @@ public class MainActivity extends FragmentActivity {
 				getSupportFragmentManager());
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-		mViewPager.setCurrentItem(getWeek());
+		mViewPager.setCurrentItem(getWeek()+7*100);
+		mViewPager.setHorizontalScrollBarEnabled(true);
 		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int arg0) {
-				mViewPager.setCurrentItem(arg0);
 			}
 
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				if (arg0 == 0) {
-					mViewPager.setCurrentItem(7, false);
+				/*if (arg0 == 0) {
+					mViewPager.setCurrentItem(8, false);
 				} else if (arg0 == 8) {
 					mViewPager.setCurrentItem(1, false);
-				}
+				}*/
 			}
 
 			public void onPageScrollStateChanged(int arg0) {
@@ -63,19 +65,20 @@ public class MainActivity extends FragmentActivity {
 		public Fragment getItem(int i) {
 			Fragment fragment = new DummySectionFragment();
 			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_WEEK_NUMBER, i);
+			args.putInt(DummySectionFragment.ARG_WEEK_NUMBER, i%7);
 			fragment.setArguments(args);
 			return fragment;
 		}
 
 		@Override
 		public int getCount() {
-			return 9;
+			return Integer.MAX_VALUE;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			switch (position) {
+			int realPosition = position%7;
+			switch (realPosition) {
 			case 0:
 				return getString(R.string.title_section7).toUpperCase();
 			case 1:
