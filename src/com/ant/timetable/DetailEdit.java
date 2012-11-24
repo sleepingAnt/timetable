@@ -1,6 +1,7 @@
 package com.ant.timetable;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.ant.timetable.db.MainDB;
 
 public class DetailEdit extends Activity {
+
 	private int week;
 	private int section;
 	private MainDB myMainDB = new MainDB(this);
@@ -52,7 +54,7 @@ public class DetailEdit extends Activity {
 				}
 				Log.i("my", "信息：" + courseName + teacher + classroom + section);
 				updateCourse();
-				DetailEdit.this.finish();
+				finish();
 			}
 		});
 		
@@ -67,14 +69,23 @@ public class DetailEdit extends Activity {
 	private void updateCourse() {
 		boolean b;
 		myMainDB.getWritableDatabase();
+		Intent aintent = new Intent(DetailEdit.this, MainActivity.class);
+		aintent.putExtra("result", 1);
 		if (myMainDB.isCourseExist(week, section)) {
 			b = myMainDB.editCourse(week, section, courseName, classroom, teacher);
 			Log.i("my", "不为空");
+			if(b) {
+				Log.i("my", "添加成功");
+				setResult(1, aintent);
+			} else {
+				Log.i("my", "添加失败");
+			}
 		} else {
 			b = myMainDB.addCourse(week, section, courseName, classroom, teacher);
 			Log.i("my", "为空");
 			if(b) {
 				Log.i("my", "添加成功");
+				setResult(1, aintent);
 			} else {
 				Log.i("my", "添加失败");
 			}

@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,23 +32,35 @@ public class MainActivity extends FragmentActivity {
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		mViewPager.setCurrentItem(getWeek()+7*100);
 		mViewPager.setHorizontalScrollBarEnabled(true);
-		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
-			public void onPageSelected(int arg0) {
-			}
+//		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
+//			public void onPageSelected(int arg0) {
+//			}
+//
+//			public void onPageScrolled(int arg0, float arg1, int arg2) {
+//				/*if (arg0 == 0) {
+//					mViewPager.setCurrentItem(8, false);
+//				} else if (arg0 == 8) {
+//					mViewPager.setCurrentItem(1, false);
+//				}*/
+//			}
+//
+//			public void onPageScrollStateChanged(int arg0) {
+//
+//			}
+//		});
 
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				/*if (arg0 == 0) {
-					mViewPager.setCurrentItem(8, false);
-				} else if (arg0 == 8) {
-					mViewPager.setCurrentItem(1, false);
-				}*/
-			}
+	}
 
-			public void onPageScrollStateChanged(int arg0) {
-
-			}
-		});
-
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode == 1) {
+			refresh();
+		}
+	}
+	
+	public void refresh() {
+		mViewPager.getAdapter().notifyDataSetChanged();
 	}
 
 	/**
@@ -57,6 +68,16 @@ public class MainActivity extends FragmentActivity {
 	 * one of the primary sections of the app.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+		@Override
+		public int getItemPosition(Object object) {
+			return POSITION_NONE;
+		}
+
+		@Override
+		public void notifyDataSetChanged() {
+			super.notifyDataSetChanged();
+		}
+
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
@@ -221,7 +242,7 @@ public class MainActivity extends FragmentActivity {
 				intent.putExtra("week", week);
 				intent.putExtra("section", s);
 				intent.setClass(getActivity(), DetailEdit.class);
-				startActivity(intent);
+				startActivityForResult(intent, 0);
 			}
 		};
 		public DummySectionFragment() {
