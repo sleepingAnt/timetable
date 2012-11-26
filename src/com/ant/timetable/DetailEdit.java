@@ -79,7 +79,6 @@ public class DetailEdit extends Activity {
 				DetailEdit.this.finish();
 			}
 		});
-
 	}
 
 	public String getWeek(int week) {
