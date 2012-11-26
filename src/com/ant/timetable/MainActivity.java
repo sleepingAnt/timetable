@@ -101,7 +101,7 @@ public class MainActivity extends FragmentActivity {
 			int realPosition = position%7;
 			switch (realPosition) {
 			case 0:
-				return getString(R.string.title_section7).toUpperCase();
+				return getString(R.string.title_section7).toUpperCase(); 
 			case 1:
 				return getString(R.string.title_section1).toUpperCase();
 			case 2:
@@ -159,6 +159,10 @@ public class MainActivity extends FragmentActivity {
 		private TextView tv_teacher_noon_2;
 		private TextView tv_teacher_night_1;
 		private TextView tv_teacher_night_2;
+
+		public DummySectionFragment() {
+		}
+		
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
@@ -192,24 +196,21 @@ public class MainActivity extends FragmentActivity {
 			tv_teacher_night_1 = (TextView) getView().findViewById(R.id.tv_teacher_night_1);
 			tv_teacher_night_2 = (TextView) getView().findViewById(R.id.tv_teacher_night_2);
 			
-			tv_course_m_1.setText(myMainDB.queryCourse(week, 1).getCourseName().equals("") ? 
-					"课程名称" : myMainDB.queryCourse(week, 1).getCourseName());
+			tv_course_m_1.setText(myMainDB.queryCourse(week, 1).getCourseName());
 			tv_course_m_2.setText(myMainDB.queryCourse(week, 2).getCourseName());
 			tv_course_noon_1.setText(myMainDB.queryCourse(week, 3).getCourseName());
 			tv_course_noon_2.setText(myMainDB.queryCourse(week, 4).getCourseName());
 			tv_course_night_1.setText(myMainDB.queryCourse(week, 5).getCourseName());
 			tv_course_night_2.setText(myMainDB.queryCourse(week, 6).getCourseName());
 			
-			tv_classroom_m_1.setText(myMainDB.queryCourse(week, 1).getClassroom().equals("") ?
-					"教室" : myMainDB.queryCourse(week, 1).getClassroom());
+			tv_classroom_m_1.setText(myMainDB.queryCourse(week, 1).getClassroom());
 			tv_classroom_m_2.setText(myMainDB.queryCourse(week, 2).getClassroom());
 			tv_classroom_noon_1.setText(myMainDB.queryCourse(week, 3).getClassroom());
 			tv_classroom_noon_2.setText(myMainDB.queryCourse(week, 4).getClassroom());
 			tv_classroom_night_1.setText(myMainDB.queryCourse(week, 5).getClassroom());
 			tv_classroom_night_2.setText(myMainDB.queryCourse(week, 6).getClassroom());
 			
-			tv_teacher_m_1.setText(myMainDB.queryCourse(week, 1).getTeacher().equals("") ?
-					"教师名字" : myMainDB.queryCourse(week, 1).getTeacher());
+			tv_teacher_m_1.setText(myMainDB.queryCourse(week, 1).getTeacher());
 			tv_teacher_m_2.setText(myMainDB.queryCourse(week, 2).getTeacher());
 			tv_teacher_noon_1.setText(myMainDB.queryCourse(week, 3).getTeacher());
 			tv_teacher_noon_2.setText(myMainDB.queryCourse(week, 4).getTeacher());
@@ -248,8 +249,6 @@ public class MainActivity extends FragmentActivity {
 				startActivityForResult(intent, 0);
 			}
 		};
-		public DummySectionFragment() {
-		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,

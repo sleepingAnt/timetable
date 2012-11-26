@@ -78,6 +78,7 @@
             android:layout_marginTop="3dp"
             android:layout_weight="1"
             android:ems="10"
+            android:completionThreshold="1"
             android:hint="输入课程名称" />
 
     </LinearLayout>

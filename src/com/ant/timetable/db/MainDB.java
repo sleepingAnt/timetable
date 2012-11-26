@@ -1,5 +1,8 @@
 package com.ant.timetable.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,10 +25,12 @@ public class MainDB extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase sdb) {
-		String sql = "create table table_course(t_week integer,t_section integer,"
+		String sqlTableCourse = "create table table_course(t_week integer,t_section integer,"
 				+ "course_name varchar(50),course_classroom varchar(50),course_teacher varchar(50)"
 				+ ")";
-		sdb.execSQL(sql);
+		String sqlTableCourseName = "create table table_course_name(course_name varchar(50))";
+		sdb.execSQL(sqlTableCourse);
+		sdb.execSQL(sqlTableCourseName);
 	}
 
 	@Override
@@ -33,6 +38,45 @@ public class MainDB extends SQLiteOpenHelper {
 
 	}
 
+	public boolean addNewCourseName(String courseName) {
+		boolean result = false;
+		try {
+			db = this.getWritableDatabase();
+			String sql = String
+					.format("insert into table_course_name (course_name) values ('%s')", courseName);
+			if(!isCourseNameExist(courseName)) {
+				db.execSQL(sql);
+			}
+			closeDB();
+			result = true;
+		} catch (Exception e) {
+			result = false;
+		}
+		return result;
+	}
+	
+	private boolean isCourseNameExist(String courseName) {
+		boolean result = true;
+		db = this.getWritableDatabase();
+		String sql = "select * from table_course_name where course_name='" + courseName + "'";
+		Cursor cursor = db.rawQuery(sql, null);
+		if(cursor.getCount() == 0) {
+			result = false;
+		}
+		return result;
+	}
+	
+	public List<String> queryCourseName() {
+		List<String> list = new ArrayList<String>();
+		db = this.getWritableDatabase();
+		String sql = "select * from table_course_name";
+		Cursor cursor = db.rawQuery(sql, null);
+		while(cursor.moveToNext()) {
+			list.add(cursor.getString(0));
+		}
+		return list;
+	}
+	
 	/**
 	 * 查询一条课程的相关信息（包括课程名称、老师、上课地点）
 	 * @param week 当前课程所在的周
@@ -42,13 +86,9 @@ public class MainDB extends SQLiteOpenHelper {
 	public Course queryCourse(int week, int section) {
 		Course myCourse = new Course();
 		myCourse.week = week - 1;
-		Log.i("my", "week:::::" + week);
 		myCourse.section = section;
-		Log.i("my", "section:::::" + section);
 		try {
-			Log.i("my", "queried");
 			db = this.getWritableDatabase();
-			Log.i("my", "queried2");
 			String sql = "select * from table_course where t_week="
 					+ week + " and t_section=" + section;
 			Cursor cursor = db.rawQuery(sql, null);
@@ -60,11 +100,12 @@ public class MainDB extends SQLiteOpenHelper {
 			}
 			closeDB();
 		} catch (Exception e) {
-			myCourse.classroom = "请设置";
-			myCourse.courseName = "请设置";
-			myCourse.teacher = "请设置";
+			myCourse.classroom = "上课地点";
+			myCourse.courseName = "课程名称";
+			myCourse.teacher = "上课教师";
+			return myCourse;
 		} finally {
-			
+			closeDB();
 		}
 		return myCourse;
 	}

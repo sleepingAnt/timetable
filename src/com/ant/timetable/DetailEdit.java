@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ant.timetable.db.MainDB;
@@ -16,9 +19,9 @@ public class DetailEdit extends Activity {
 	private int week;
 	private int section;
 	private MainDB myMainDB = new MainDB(this);
-	private TextView tv_course_name;
-	private TextView tv_teacher;
-	private TextView tv_classroom;
+	private AutoCompleteTextView tv_course_name;
+	private EditText tv_teacher;
+	private EditText tv_classroom;
 	private String courseName;
 	private String teacher;
 	private String classroom;
@@ -32,14 +35,14 @@ public class DetailEdit extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_course);
-
+		myMainDB.getWritableDatabase();
 		week = getIntent().getIntExtra("week", 0);
 		section = getIntent().getIntExtra("section", 0);
 		Log.i("my", "星期" + week);
 		Log.i("my", "第几节" + section);
-		tv_course_name = (TextView) findViewById(R.id.course_name);
-		tv_teacher = (TextView) findViewById(R.id.teacher);
-		tv_classroom = (TextView) findViewById(R.id.classroom);
+		tv_course_name = (AutoCompleteTextView) findViewById(R.id.course_name);
+		tv_teacher = (EditText) findViewById(R.id.teacher);
+		tv_classroom = (EditText) findViewById(R.id.classroom);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
 		btn_back = (Button) findViewById(R.id.btn_back);
 		tv_nav_week = (TextView) findViewById(R.id.tv_nav_week);
@@ -54,18 +57,18 @@ public class DetailEdit extends Activity {
 		tv_teacher.setText(myMainDB.queryCourse(week, section).getTeacher());
 		tv_classroom.setText(myMainDB.queryCourse(week, section).getClassroom());
 
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,myMainDB.queryCourseName());
+		tv_course_name.setAdapter(arrayAdapter);
+		
 		btn_ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				courseName = tv_course_name.getText().toString();
 				teacher = tv_teacher.getText().toString();
 				classroom = tv_classroom.getText().toString();
-				if (courseName.equals("") || teacher.equals("")
-						|| classroom.equals("")) {
-
-				} else {
-					
+				if (!courseName.equals("")) {
+					myMainDB.addNewCourseName(courseName);
 				}
-				Log.i("my", "信息：" + courseName + teacher + classroom + section);
+				//Log.i("my", "信息：" + courseName + teacher + classroom + section);
 				updateCourse();
 				finish();
 			}
