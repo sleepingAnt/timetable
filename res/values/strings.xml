@@ -12,5 +12,11 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">我的课程表</string>
     <string name="title_activity_welcome">课程表 </string>
+    <string name="defult_course_name">课程名称</string>
+    <string name="classroom">教室</string>
+    <string name="teacher">上课教师</string>
+    <string name="morning">上午</string>
+    <string name="noon">下午</string>
+    <string name="night">晚上</string>
 
 </resources>

@@ -75,8 +75,14 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int classroom=0x7f05000d;
+        public static final int defult_course_name=0x7f05000c;
         public static final int hello_world=0x7f050008;
         public static final int menu_settings=0x7f050009;
+        public static final int morning=0x7f05000f;
+        public static final int night=0x7f050011;
+        public static final int noon=0x7f050010;
+        public static final int teacher=0x7f05000e;
         public static final int title_activity_main=0x7f05000a;
         public static final int title_activity_welcome=0x7f05000b;
         public static final int title_section1=0x7f050007;
