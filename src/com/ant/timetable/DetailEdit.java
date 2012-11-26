@@ -24,6 +24,9 @@ public class DetailEdit extends Activity {
 	private String classroom;
 	private Button btn_ok;
 	private Button btn_back;
+	private TextView tv_nav_week;
+	private TextView tv_nav_time;
+	private TextView tv_nav_section;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,13 @@ public class DetailEdit extends Activity {
 		tv_classroom = (TextView) findViewById(R.id.classroom);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
 		btn_back = (Button) findViewById(R.id.btn_back);
+		tv_nav_week = (TextView) findViewById(R.id.tv_nav_week);
+		tv_nav_time = (TextView) findViewById(R.id.tv_nav_time);
+		tv_nav_section = (TextView) findViewById(R.id.tv_nav_section);
+		
+		tv_nav_week.setText(getWeek(week));
+		tv_nav_time.setText(getTime(section));
+		tv_nav_section.setText(getSection(section));
 		
 		tv_course_name.setText(myMainDB.queryCourse(week, section).getCourseName());
 		tv_teacher.setText(myMainDB.queryCourse(week, section).getTeacher());
@@ -69,6 +79,43 @@ public class DetailEdit extends Activity {
 
 	}
 
+	public String getWeek(int week) {
+		switch(week) {
+		case 0 : return "星期日";
+		case 1 : return "星期一";
+		case 2 : return "星期二";
+		case 3 : return "星期三";
+		case 4 : return "星期四";
+		case 5 : return "星期五";
+		case 6 : return "星期六";
+		}
+		return "";
+	}
+	
+	public String getTime(int section) {
+		switch(section) {
+		case 1 : return "上午";
+		case 2 : return "上午";
+		case 3 : return "下午";
+		case 4 : return "下午";
+		case 5 : return "晚上";
+		case 6 : return "晚上";
+		}
+		return "";
+	}
+	
+	public String getSection(int section) {
+		switch(section) {
+		case 1 : return "第一节";
+		case 2 : return "第二节";
+		case 3 : return "第一节";
+		case 4 : return "第二节";
+		case 5 : return "第一节";
+		case 6 : return "第二节";
+		}
+		return "";
+	}
+	
 	private void updateCourse() {
 		boolean b;
 		myMainDB.getWritableDatabase();

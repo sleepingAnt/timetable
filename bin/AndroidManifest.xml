@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".DetailEdit"
-            android:label="@string/title_activity_main" >
+            android:label="@string/edit_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Welcome" />
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".Welcome"
-            android:label="@string/title_activity_welcome" >
+            android:label="@string/hello_world" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

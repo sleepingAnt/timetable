@@ -18,5 +18,7 @@
     <string name="morning">上午</string>
     <string name="noon">下午</string>
     <string name="night">晚上</string>
+    <string name="number_one">第一节</string>
+    <string name="edit_detail">编辑课程</string>
 
 </resources>
