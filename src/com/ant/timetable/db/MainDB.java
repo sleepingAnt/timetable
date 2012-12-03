@@ -38,6 +38,53 @@ public class MainDB extends SQLiteOpenHelper {
 
 	}
 
+	/**
+	 * 清空课程表数据
+	 * @return
+	 */
+	public boolean deleteAllCourse() {
+		boolean result = true;
+		try {
+			db = this.getWritableDatabase();
+			String sql = String
+					.format("DROP TABLE IF EXISTS table_course");
+			db.execSQL(sql);
+			String sqlTableCourse = "create table table_course(t_week integer,t_section integer,"
+					+ "course_name varchar(50),course_classroom varchar(50),course_teacher varchar(50)"
+					+ ")";
+			db.execSQL(sqlTableCourse);
+			closeDB();
+		} catch (Exception e) {
+			result = false;
+		}
+		return result;
+	}
+	
+	/**
+	 * 清空课程名称数据
+	 * @return
+	 */
+	public boolean deleteAllCourseName() {
+		boolean result = true;
+		try {
+			db = this.getWritableDatabase();
+			String sql = String
+					.format("DROP TABLE IF EXISTS table_course_name");
+			db.execSQL(sql);
+			String sqlTableCourseName = "create table table_course_name(course_name varchar(50))";
+			db.execSQL(sqlTableCourseName);
+			closeDB();
+		} catch (Exception e) {
+			result = false;
+		}
+		return result;
+	}
+	
+	/**
+	 * 添加课程信息（用于编辑课程表时的自动提示）
+	 * @param courseName
+	 * @return
+	 */
 	public boolean addNewCourseName(String courseName) {
 		boolean result = false;
 		try {
@@ -55,6 +102,11 @@ public class MainDB extends SQLiteOpenHelper {
 		return result;
 	}
 	
+	/**
+	 * 判断课程名称是否已经存在（用于编辑课程表时的自动提示）
+	 * @param courseName
+	 * @return
+	 */
 	private boolean isCourseNameExist(String courseName) {
 		boolean result = true;
 		db = this.getWritableDatabase();
@@ -66,6 +118,10 @@ public class MainDB extends SQLiteOpenHelper {
 		return result;
 	}
 	
+	/**
+	 * 获取课程名称（用于编辑课程表时的自动提示）
+	 * @return
+	 */
 	public List<String> queryCourseName() {
 		List<String> list = new ArrayList<String>();
 		db = this.getWritableDatabase();

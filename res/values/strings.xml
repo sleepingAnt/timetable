@@ -20,5 +20,7 @@
     <string name="night">晚上</string>
     <string name="number_one">第一节</string>
     <string name="edit_detail">编辑课程</string>
+    <string name="about">关于</string>
+    <string name="about_content">    感谢使用蚂蚁课程表！你的支持就是我最大的动力^_^</string>
 
 </resources>

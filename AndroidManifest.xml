@@ -15,16 +15,14 @@
             android:name=".DetailEdit"
             android:label="@string/edit_detail" 
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
         </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+        </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/about" >
         </activity>
         <activity
             android:name=".Welcome"
